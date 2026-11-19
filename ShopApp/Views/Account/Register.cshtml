@@ -1,0 +1,59 @@
+﻿@model ShopApp.Models.RegisterUserViewModel
+
+<h2>Пайдаланушыны тіркеу</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" style="color: green; font-weight: bold;">
+        @TempData["Success"]
+    </div>
+}
+
+<form asp-action="Register" method="post">
+    @Html.AntiForgeryToken()
+
+    <!-- Жалпы қателер жиынтығы -->
+    <div asp-validation-summary="All" style="color: red; font-weight: bold; margin-bottom: 15px;"></div>
+
+    <div style="margin-bottom: 10px;">
+        <label asp-for="FullName"></label><br />
+        <input asp-for="FullName" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="FullName" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="Email" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label asp-for="Age"></label><br />
+        <input asp-for="Age" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="Age" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="Password" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label asp-for="ConfirmPassword"></label><br />
+        <input asp-for="ConfirmPassword" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="ConfirmPassword" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label asp-for="Phone"></label><br />
+        <input asp-for="Phone" style="width: 100%; padding: 5px;" />
+        <span asp-validation-for="Phone" style="color: red;"></span>
+    </div>
+
+    <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer;">Тіркелу</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
